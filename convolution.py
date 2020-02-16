@@ -12,7 +12,7 @@ def convolution(image, kernel):
     l=list()
     for i in range(k_size):
         for j in range(k_size):
-            l.append(image[i:-(k_size)+i,j:-(k_size)+j]*kernel[-i-1][-j-1])
+            l.append(image[i:image_size[0]+3-k_size+i,j:image_size[0]+3-k_size+j]*kernel[k_size-i-1][k_size-j-1])
     return sum(l)
 def correlation(image, kernel):
     k_size=kernel.shape[0]
@@ -24,5 +24,5 @@ def correlation(image, kernel):
     l=list()
     for i in range(k_size):
         for j in range(k_size):
-            l.append(image[i:-(k_size)+i,j:-(k_size)+j]*kernel[i][j])
+            l.append(image[i:image_size[0]+3-k_size+i,j:image_size[0]+3-k_size+j]*kernel[i][j])
     return sum(l)
